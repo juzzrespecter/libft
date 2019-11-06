@@ -6,19 +6,22 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 16:25:13 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/05 16:39:06 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/06 17:41:25 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
 
 static int	ft_lenstr(char const *s)
 {
 	int size;
+	int i;
 
 	size = 0;
-	while (*s)
+	while (s[i])
 	{
 		size++;
-		s++;
+		i++;
 	}
 	return (size);
 }

@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 20:28:49 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/06 12:10:00 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/06 16:04:12 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		ft_putnbr_chungo(int n, int size)
 	return (size++);
 }
 
-void	*ft_write_str(char *str, int n, int size)
+void	ft_write_str(char *str, int n, int size)
 {
 	if (n < 0)
 	{

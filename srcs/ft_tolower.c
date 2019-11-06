@@ -6,11 +6,11 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 19:30:53 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/04 19:35:28 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/06 18:03:10 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	tolower(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (c + 32);

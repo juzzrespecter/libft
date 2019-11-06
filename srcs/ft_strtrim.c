@@ -6,44 +6,54 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 16:39:18 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/05 18:37:54 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/06 16:35:07 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static int	ft_check_set_matches(char c, char const set)
+static int	ft_check_set_matches(char c, char const *set)
 {
-	while (*set)
+	int i;
+
+	i = 0;
+	while (set[i])
 	{
-		if (c == *set)
+		if (c == set[i])
 			return (1);
-		set++;
+		i++;
 	}
 	return (0);
 }
 
-static char	*ft_trim_left(char const *s1, char const *set)
+static int	ft_trim_left(char const *s1, char const *set)
 {
-	while (ft_check_set_matches(*s1, set));
-		s1++;
-	return (s1);
+	int start;
+	int i;
+
+	i = 0;
+	start = 0;
+	while (ft_check_set_matches(s1[i], set))
+	{
+		i++;
+		start++;
+	}
+	return (start);
 }	
 
-static char	*ft_trim_right(char const *s1, char const *set)
+static int	ft_trim_right(char const *s1, char const *set)
 {
-	char *starts1;
+	int i;
 
-	starts1 = s1;
-	while (*s1)
-		s1++;
-	s1--;
-	while (ft_check_set_matches(*s1, set) && s1 != starts1)
-		s1--;
-	return (s1);
+	i = 0;
+	while (s1[i + 1])
+		i++;
+	while (ft_check_set_matches(s1[i], set) && i)
+		i--;
+	return (i);
 }
 
-static int	ft_get_size_trimmed(char *start, char *end)
+static int	ft_get_size_trimmed(int start, int end)
 {
 	int	size;
 
@@ -61,19 +71,19 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int size;
 	char *starttrm;
 	char *strtrimmed;
-	char *start;
-	char *end;
+	int		start;
+	int	 	end;
 
 	start = ft_trim_left(s1, set);
 	end = ft_trim_right(s1, set);
-	size = ft_get_size_trimmed(start, end, s1);
+	size = ft_get_size_trimmed(start, end);
 	strtrimmed = malloc(sizeof(char) * (size + 1));
 	if (strtrimmed == NULL)
 		return (NULL);
 	starttrm = strtrimmed;
 	while (start <= end)
 	{
-		*strtrimmed = *start;
+		*strtrimmed = s1[start];
 		start++;
 		strtrimmed++;
 	}

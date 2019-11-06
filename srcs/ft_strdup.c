@@ -6,16 +6,18 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:54:29 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/05 16:06:18 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/06 17:37:33 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+
 char	*ft_strdup(const char *s1)
 {
-	char *copy;
-	char *ptrs1;
-	char *ptrcopy;
-	int size;
+	char		*copy;
+	const char	*ptrs1;
+	char		*ptrcopy;
+	int			size;
 
 	size = 0;
 	ptrs1 = s1;
@@ -25,7 +27,7 @@ char	*ft_strdup(const char *s1)
 		s1++;
 	}
 	copy = malloc(sizeof(char) * (size + 1));
-	s1 = ptr;
+	s1 = ptrs1;
 	ptrcopy = copy;
 	while (s1)
 	{

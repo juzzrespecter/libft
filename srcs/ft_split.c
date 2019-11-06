@@ -6,40 +6,42 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 18:38:01 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/05 20:28:33 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/06 17:35:35 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stdlib.h>
 
 int		ft_get_size(char const *s, char c)
 {
 	int size;
+	int i;
 
+	i = 0;
 	size = 1;
-	while (*s)
+	while (s[i])
 	{
-		if (*s == c)
+		if (s[i] == c)
 			size++;
-		s++;
+		i++;
 	}
 	return (size);
 }
 
-int		ft_get_array_size(char *s, char c)
+int		ft_get_array_size(char const *s, char c, int i)
 {
 	int size;
 
 	size = 0;
-	while (*s != c && *s)
+	while (s[i] != c && s[i])
 	{
-		s++;
+		i++;
 		size++;
 	}
 	return (size);
 }
 
-void	ft_build_array(char *s, char c, char *tabla,  int size)
+void	ft_build_array(char const *s, char c, char *tabla, int size, int i)
 {
 	tabla = malloc(sizeof(char) * (size + 1));
 	while (*s != c && *s)
@@ -51,27 +53,29 @@ void	ft_build_array(char *s, char c, char *tabla,  int size)
 	*tabla = 0;
 }		
 
-char	*ft_move_array(char const *s, char c)
+int		ft_move_array(char const *s, char c, int i)
 {
-	while (*s != c && *s)
-		s++;
-	return (s);
+	while (s[i] != c && *s)
+		i++;
+	return (i);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char **tabla;
-	int size;
+	char 	**tabla;
+	int		size;
+	int		i;
 
 	size = ft_get_size(s, c);
 	tabla = malloc(sizeof(char *) * (size + 1));
 	if (tabla == NULL)
 		return (NULL);
-	while (*s)
+	i = 0;
+	while (s[i])
 	{
-		size = ft_get_array_size(s, c);
-		ft_build_array(s, c, *tabla, size);
-		s = ft_move_array(s, c);
+		size = ft_get_array_size(s, c, i);
+		ft_build_array(s, c, *tabla, size, i);
+		i += ft_move_array(s, c, i);
 		tabla++;
 	}
 	tabla = NULL;

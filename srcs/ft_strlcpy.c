@@ -6,11 +6,13 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 19:04:13 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/04 19:11:39 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/06 17:33:28 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	strlcpy(char *dst, const char *src, size_t dstsize)
+#include <string.h>
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t size;
 

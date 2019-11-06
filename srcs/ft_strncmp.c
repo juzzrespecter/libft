@@ -6,13 +6,13 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 19:12:08 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/04 19:14:09 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/06 18:10:13 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-int	strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	while (*s1 == *s2 && *s1 && *s2 && n--)
 	{
