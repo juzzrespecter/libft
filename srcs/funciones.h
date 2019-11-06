@@ -6,9 +6,14 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:46:15 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/06 18:10:48 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/06 19:48:15 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef FUNCIONES_H
+#define FUNCIONES_H
+
+#include <string.h>
 
 int		ft_atoi(const char *str);
 void    ft_bzero(void *s, size_t n);
@@ -41,5 +46,4 @@ char    *ft_substr(char const *s, unsigned int start, size_t len);
 int     ft_tolower(int c);
 int     ft_toupper(int c);
 
-
-
+#endif

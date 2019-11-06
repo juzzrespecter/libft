@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 16:39:18 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/06 16:35:07 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/06 20:11:03 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ static int	ft_get_size_trimmed(int start, int end)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int size;
-	char *starttrm;
-	char *strtrimmed;
+	int		size;
+	char	*starttrm;
+	char	*strtrimmed;
 	int		start;
-	int	 	end;
+	int		end;
 
 	start = ft_trim_left(s1, set);
 	end = ft_trim_right(s1, set);
