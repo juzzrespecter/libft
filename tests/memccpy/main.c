@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 15:48:34 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/07 20:28:21 by danrodri         ###   ########.fr       */
+/*   Created: 2019/11/07 16:26:22 by danrodri          #+#    #+#             */
+/*   Updated: 2019/11/07 16:58:58 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
+#include <unistd.h>
 #include <stdlib.h>
+#include "../../srcs/libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+int	main(int argc, char **argv)
 {
-	char	*mem;
-	char	*ptr;
-	size_t	i;
+	(void)argc;
+	(void)argv;
+	void *mem; 
 
-	mem = malloc(count * size);
-	if (mem == NULL)
-		return (NULL);
-	i = 0;
-	ptr = mem;
-	while (i < count * size)
-	{
-		*mem = 0;
-		mem++;
-		i++;
-	}
-	return ptr;
+	mem = malloc(sizeof(*mem) * 10);
+
+	memset(mem, 'z', 10);
+	write(1, "Func. bzero: ", 13);
+	bzero(mem, 5);
+	write(1, mem, 10);
+	write(1, "\n", 1);
+
+	memset(mem, 'z', 10);
+	write(1, "Func. ft_bzero: ", 16);
+	ft_bzero(mem, 5);
+	write(1, mem, 10);
+	write(1, "\n", 1);
+
+	return (0);
 }

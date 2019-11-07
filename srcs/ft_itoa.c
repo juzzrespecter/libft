@@ -6,11 +6,12 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 20:28:49 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/06 16:04:12 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/07 20:25:59 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 int		ft_putnbr_chungo(int n, int size)
 {
@@ -19,9 +20,27 @@ int		ft_putnbr_chungo(int n, int size)
 		n *= -1;
 		size++;
 	}
-	if (n < 9)
-		size = ft_putnbr_chungo(n / 10, size);
-	return (size++);
+	while (n > 9)
+	{
+		size++;
+		n = n / 10;
+	}
+	size++;
+	return (size);
+}
+
+char	ft_get_number(int n, int i)
+{
+	int div;
+
+	div = 1;
+	while (i - 1 > 0)
+	{
+		div *= 10;
+		i--;
+	}
+	n = n / div;
+	return ((n % 10) + '0');
 }
 
 void	ft_write_str(char *str, int n, int size)
@@ -30,12 +49,17 @@ void	ft_write_str(char *str, int n, int size)
 	{
 		*str = '-';
 		str++;
+		size--;
 		n *= -1;
 	}
+	while (size)
+	{
+		*str = ft_get_number(n, size);
+		printf("- %c, %p, %d\n", *str, str, size);
+		size--;
+		str++;
+	}
 	*str = 0;
-	if (n > 9)
-		ft_write_str(str++, n / 10, size--);
-	*str = (n % 10);
 }
 
 char	*ft_itoa(int n)

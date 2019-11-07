@@ -6,7 +6,7 @@
 #    By: danrodri <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 15:49:46 by danrodri          #+#    #+#              #
-#    Updated: 2019/11/07 15:51:15 by danrodri         ###   ########.fr        #
+#    Updated: 2019/11/07 16:21:26 by danrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,17 +27,17 @@ RM			= rm -f
 CFLAGS		= -Wall -Werror -Wextra
 
 ${NAME}:
-			@cc $(CFLAGS) -c ${SRCS}
+			@cc $(CFLAGS) -c $(SRCS)
 			@mv *.o $(PATHOBJS)
-			@ar rc ${NAME} ${OBJS}
+			@ar rc $(NAME) $(OBJS)
 
-all:		${NAME}
+all:		$(NAME)
 
 clean:
-			@${RM} ${OBJS}
+			@$(RM) $(OBJS)
 
 fclean:		clean
-			@${RM} ${NAME}
+			@$(RM) $(NAME)
 
 re:			fclean all
 
