@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 15:48:34 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/07 15:19:10 by danrodri         ###   ########.fr       */
+/*   Created: 2019/11/07 13:07:57 by danrodri          #+#    #+#             */
+/*   Updated: 2019/11/07 13:12:05 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-void	*ft_calloc(size_t count, size_t size)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*mem;
-	char	*ptr;
-	size_t	i;
-
-	mem = malloc(count * size);
-	if (mem == NULL)
-		return (NULL);
-	i = 0;
-	ptr = mem;
-	while (i < count)
+	if (n < 0)
 	{
-		*mem = 0;
-		mem++;
-		i++;
+		write(fd, "-", 1);
+		n *= -1;
 	}
-	return ptr;
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	n = n % 10;
+	write(fd, &n, 1);
 }

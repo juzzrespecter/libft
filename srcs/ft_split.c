@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 18:38:01 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/06 17:35:35 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/07 15:20:36 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ int		ft_get_array_size(char const *s, char c, int i)
 void	ft_build_array(char const *s, char c, char *tabla, int size, int i)
 {
 	tabla = malloc(sizeof(char) * (size + 1));
-	while (*s != c && *s)
+	while (*s != c && s[i])
 	{
-		*tabla = *s;
+		*tabla = s[i];
 		tabla++;
-		s++;
+		i++;
 	}
 	*tabla = 0;
 }		

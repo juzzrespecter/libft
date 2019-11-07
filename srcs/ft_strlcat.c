@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 18:34:57 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/06 17:41:54 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/07 15:31:51 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int 		tamsrc;
-	int			tamdst;
+	size_t 		tamsrc;
+	size_t		tamdst;
 	size_t 		size;
-	const char 	*srcptr;
+	const char 	*startsrc;
 
-	srcptr = src;
+	tamsrc = 0;
+	tamdst = 0;
+	startsrc = src;
 	while (*src)
 	{
 		tamsrc++;
 		src++;
 	}
-	src = srcptr;
+	src = startsrc;
 	while (*dst)
 	{
 		tamdst++;

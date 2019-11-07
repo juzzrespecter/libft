@@ -6,23 +6,29 @@
 #    By: danrodri <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 15:49:46 by danrodri          #+#    #+#              #
-#    Updated: 2019/11/06 19:55:46 by danrodri         ###   ########.fr        #
+#    Updated: 2019/11/07 15:51:15 by danrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= ./srcs/*.c
+.PHONY:		all clean fclean re
 
-OBJS	= ./objs/*.o
+NAME		= libft.a
 
-NAME	= libft.a
+PATHSRCS	= ./srcs/
 
-RM		= rm -f
+PATHOBJS	= ./objs/
 
-CFLAGS	= -Wall -Werror -Wextra
+SRCS		= $(PATHSRCS)*.c
+
+OBJS		= $(PATHOBJS)*.o
+
+RM			= rm -f
+
+CFLAGS		= -Wall -Werror -Wextra
 
 ${NAME}:
-			@cc -c  ${SRCS}
-			@mv *.o ./objs
+			@cc $(CFLAGS) -c ${SRCS}
+			@mv *.o $(PATHOBJS)
 			@ar rc ${NAME} ${OBJS}
 
 all:		${NAME}
@@ -33,18 +39,5 @@ clean:
 fclean:		clean
 			@${RM} ${NAME}
 
-cleantest:	fclean
-			@${RM} programa main.o
-
-bmain:		
-			@cc -c main.c
-
-test:		bmain
-			@cc ${CFLAGS} -o programa main.o -L. -lft
-
 re:			fclean all
-
-.PHONY:		all clean fclean re test bmain
-
-
 

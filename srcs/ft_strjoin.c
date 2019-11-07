@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 16:25:13 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/06 17:41:25 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/07 15:22:15 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,10 @@
 static int	ft_lenstr(char const *s)
 {
 	int size;
-	int i;
 
 	size = 0;
-	while (s[i])
-	{
+	while (s[size])
 		size++;
-		i++;
-	}
 	return (size);
 }
 

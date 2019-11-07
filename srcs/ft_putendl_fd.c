@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 15:48:34 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/07 15:19:10 by danrodri         ###   ########.fr       */
+/*   Created: 2019/11/07 13:03:30 by danrodri          #+#    #+#             */
+/*   Updated: 2019/11/07 13:11:47 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-void	*ft_calloc(size_t count, size_t size)
+void		ft_putendl_fd(char *s, int fd)
 {
-	char	*mem;
-	char	*ptr;
-	size_t	i;
-
-	mem = malloc(count * size);
-	if (mem == NULL)
-		return (NULL);
-	i = 0;
-	ptr = mem;
-	while (i < count)
+	while (*s)
 	{
-		*mem = 0;
-		mem++;
-		i++;
+		write(fd, s, 1);
+		s++;
 	}
-	return ptr;
+	write(fd, "\n", 1);
 }
