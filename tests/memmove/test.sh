@@ -6,4 +6,5 @@ gcc -o main main.o -L../../ -lft
 ./main "ldfjpgifgd"
 ./main "dkfngkdfjgdijopia"
 ./main "aidjflsdk"
-./main "sdfaafhjd"
+./main "sdfadfgjdofigjdofigjjdoafhjd"
+./main ""

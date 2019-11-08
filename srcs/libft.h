@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:46:15 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/06 19:48:15 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/08 18:42:58 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,9 @@ char    *ft_strtrim(char const *s1, char const *set);
 char    *ft_substr(char const *s, unsigned int start, size_t len);
 int     ft_tolower(int c);
 int     ft_toupper(int c);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putstr_fd(char *s, int fd);
 
 #endif

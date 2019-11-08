@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:26:22 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/08 15:51:29 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/08 15:59:16 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,15 @@
 
 int	main(int argc, char **argv)
 {
-	char *dst;
-	char *ptr;
    	char *src = argv[1];
+	char *ptr;
 
-	dst = malloc(sizeof(char) * 11);
-	dst = memset(dst, 'e', 10);
-	*(dst + 10) = 0;
 	if (argc == 2)
 	{
-		ptr = ft_memccpy(dst, src, 97, 10);
-		printf("src = %s \nft_ dst = %s, func. return = %s\n", src, dst, ptr);
-		dst = memset(dst, 'e', 10);
-		ptr = memccpy(dst, src, 97, 10);
-		printf("mem dst = %s, func. return = %s\n\n", dst, ptr);
+		ptr = ft_memchr(src, 97, strlen(src));
+		printf("src = %s \nft_ func. return = %s\n", src, ptr);
+		ptr = memchr( src, 97, strlen(src));
+		printf("mem func. return = %s\n\n", ptr);
 	}
 	return (0);
 }

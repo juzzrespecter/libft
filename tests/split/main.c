@@ -6,32 +6,30 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:26:22 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/08 15:51:29 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/08 18:55:33 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <unistd.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <stdio.h>
 #include "../../srcs/libft.h"
 
 int	main(int argc, char **argv)
 {
-	char *dst;
-	char *ptr;
-   	char *src = argv[1];
+	char *s = argv[1];
+	char c = *argv[2];
+	char **tabla;
 
-	dst = malloc(sizeof(char) * 11);
-	dst = memset(dst, 'e', 10);
-	*(dst + 10) = 0;
-	if (argc == 2)
+	if (argc == 3)
 	{
-		ptr = ft_memccpy(dst, src, 97, 10);
-		printf("src = %s \nft_ dst = %s, func. return = %s\n", src, dst, ptr);
-		dst = memset(dst, 'e', 10);
-		ptr = memccpy(dst, src, 97, 10);
-		printf("mem dst = %s, func. return = %s\n\n", dst, ptr);
+		tabla = ft_split(s, c);
+		while (tabla)
+		{
+			printf("%s\n", *tabla);
+			tabla++;
+		}
 	}
+	printf(":(\n");
 	return (0);
 }

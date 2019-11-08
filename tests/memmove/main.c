@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:26:22 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/08 15:51:29 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/08 17:01:09 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,27 @@
 
 int	main(int argc, char **argv)
 {
+   	char *s = argv[1];
+	char *s1;
+	char *s2;
 	char *dst;
-	char *ptr;
-   	char *src = argv[1];
 
-	dst = malloc(sizeof(char) * 11);
-	dst = memset(dst, 'e', 10);
-	*(dst + 10) = 0;
+	s1 = malloc(sizeof(char) * 20);
+	memcpy(s1, s, 15);
+	s2 = malloc(sizeof(char) * 20);
+	memcpy(s2, s, 15);
+	dst = s1 + 5;
 	if (argc == 2)
 	{
-		ptr = ft_memccpy(dst, src, 97, 10);
-		printf("src = %s \nft_ dst = %s, func. return = %s\n", src, dst, ptr);
-		dst = memset(dst, 'e', 10);
-		ptr = memccpy(dst, src, 97, 10);
-		printf("mem dst = %s, func. return = %s\n\n", dst, ptr);
+		dst = ft_memmove(dst, s1, 15);
+		write(1, dst, 15);
+		write(1, "\n", 1);
+		dst = s2 + 5;
+		dst = memmove(dst, s2, 15);
+		write(1, dst, 15);
+		write(1, "\n\n", 2);
 	}
+	free(s1);
+	free(s2);
 	return (0);
 }

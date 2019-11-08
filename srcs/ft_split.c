@@ -6,11 +6,12 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 18:38:01 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/07 15:20:36 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/08 18:59:50 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 int		ft_get_size(char const *s, char c)
 {
@@ -68,11 +69,13 @@ char	**ft_split(char const *s, char c)
 
 	size = ft_get_size(s, c);
 	tabla = malloc(sizeof(char *) * (size + 1));
+	printf("valor memoria asignada = %lu\n", sizeof(char *) * (size + 1));
 	if (tabla == NULL)
 		return (NULL);
 	i = 0;
 	while (s[i])
 	{
+		printf("valor i = %d\n", i);
 		size = ft_get_array_size(s, c, i);
 		ft_build_array(s, c, *tabla, size, i);
 		i += ft_move_array(s, c, i);
