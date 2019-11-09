@@ -6,7 +6,7 @@
 #    By: danrodri <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 15:49:46 by danrodri          #+#    #+#              #
-#    Updated: 2019/11/07 16:21:26 by danrodri         ###   ########.fr        #
+#    Updated: 2019/11/09 20:43:03 by danrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,9 @@
 
 NAME		= libft.a
 
-PATHSRCS	= ./srcs/
+SRCS		= *.c
 
-PATHOBJS	= ./objs/
-
-SRCS		= $(PATHSRCS)*.c
-
-OBJS		= $(PATHOBJS)*.o
+OBJS		= $(SRCS:.c=.o)
 
 RM			= rm -f
 
@@ -28,7 +24,6 @@ CFLAGS		= -Wall -Werror -Wextra
 
 ${NAME}:
 			@cc $(CFLAGS) -c $(SRCS)
-			@mv *.o $(PATHOBJS)
 			@ar rc $(NAME) $(OBJS)
 
 all:		$(NAME)
