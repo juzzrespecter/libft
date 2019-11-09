@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 19:32:08 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/09 19:35:12 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/09 21:20:55 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	while (*lst->next != NULL)
-		lst = *lst->next;
+	while (lst->next != NULL)
+		lst = lst->next;
 	return (lst);
 }

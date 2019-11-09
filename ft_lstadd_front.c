@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 19:05:45 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/09 19:38:48 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/09 22:00:44 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 void	ft_lstadd_front(t_list **alst, t_list *new)
 {
-	*alst->next = new;
+	t_list *lst;
+
+	lst = *alst;
+	lst->next = new;
 }
