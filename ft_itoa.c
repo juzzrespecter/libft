@@ -6,12 +6,11 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 20:28:49 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/09 18:17:12 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/10 20:55:15 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int		ft_putnbr_chungo(int n, int size)
 {
@@ -55,7 +54,6 @@ void	ft_write_str(char *str, int n, int size)
 	while (size)
 	{
 		*str = ft_get_number(n, size);
-		printf("- %c, %p, %d\n", *str, str, size);
 		size--;
 		str++;
 	}

@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 20:11:27 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/09 22:14:10 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/10 20:52:42 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,28 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*newlist;
-	t_list	*firstofthelist;
+	(void)del;
+	t_list	*nlst;
+	t_list	*alst;
 	t_list	*next;
 
-	newlist = malloc(sizeof(t_list));
-	if (newlist == NULL)
+	nlst = malloc(sizeof(t_list));
+	if (nlst == NULL)
 		return (NULL);
-	firstofthelist = newlist;
+	alst = nlst;
 	while (lst->next != NULL)
 	{
 		next = malloc(sizeof(t_list));
 		if (next == NULL)
 			return (NULL);
-		newlist->content = f(lst->content);
-		newlist->next = next;
-		newlist = newlist->next;
+		nlst->content = f(lst->content);
+		nlst->next = next;
+		nlst = nlst->next;
 	}
 	if (lst->next == NULL)
 	{
-		newlist->content = f(lst->content);
-		newlist->next = NULL;
+		nlst->content = f(lst->content);
+		nlst->next = NULL;
 	}
-	return (firstofthelist);
+	return (alst);
 }

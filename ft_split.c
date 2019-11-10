@@ -1,86 +1,93 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 18:38:01 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/08 18:59:50 by danrodri         ###   ########.fr       */
+/*   Created: 2019/11/10 19:55:19 by danrodri          #+#    #+#             */
+/*   Updated: 2019/11/10 20:53:11 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-int		ft_get_size(char const *s, char c)
+static int	ft_get_size(char const *s, char c)
 {
-	int size;
 	int i;
+	int size;
 
 	i = 0;
-	size = 1;
+	size = 0;
 	while (s[i])
 	{
 		if (s[i] == c)
 			size++;
 		i++;
 	}
+	size++;
 	return (size);
 }
 
-int		ft_get_array_size(char const *s, char c, int i)
+static char	*ft_alloc_string(char const *s, char c, int i)
 {
-	int size;
+	unsigned int 	size;
+	char			*str;
 
 	size = 0;
 	while (s[i] != c && s[i])
 	{
-		i++;
 		size++;
-	}
-	return (size);
-}
-
-void	ft_build_array(char const *s, char c, char *tabla, int size, int i)
-{
-	tabla = malloc(sizeof(char) * (size + 1));
-	while (*s != c && s[i])
-	{
-		*tabla = s[i];
-		tabla++;
 		i++;
 	}
-	*tabla = 0;
-}		
-
-int		ft_move_array(char const *s, char c, int i)
-{
-	while (s[i] != c && *s)
-		i++;
-	return (i);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char 	**tabla;
-	int		size;
-	int		i;
-
-	size = ft_get_size(s, c);
-	tabla = malloc(sizeof(char *) * (size + 1));
-	printf("valor memoria asignada = %lu\n", sizeof(char *) * (size + 1));
-	if (tabla == NULL)
+	str = malloc(sizeof(char) * (size + 1));
+	if (str == NULL)
 		return (NULL);
-	i = 0;
-	while (s[i])
+	return (str);
+}
+
+static char	*ft_write_string(char const *s, char *str, char c, int i)
+{
+	int j;
+
+	j = 0;
+	while (s[i] != c && s[i])
 	{
-		printf("valor i = %d\n", i);
-		size = ft_get_array_size(s, c, i);
-		ft_build_array(s, c, *tabla, size, i);
-		i += ft_move_array(s, c, i);
-		tabla++;
+		str[j] = s[i];
+		j++;
+		i++;
 	}
-	tabla = NULL;
-	return (tabla);
+	str[j] = 0;
+	printf("String size %d, string %s\n", j, str);
+	return (str);
+}
+
+char	**ft_split2(char const *s, char c)
+{
+	int i;
+	int cont;
+	int size;
+	char *str;
+	char **tab;
+	
+	i = 0;
+	cont = 0;
+	size = ft_get_size(s, c);
+	tab = malloc(sizeof(char *) * (size + 1));
+	if (tab == NULL)
+		return (NULL);
+	while (cont < size)
+	{
+		printf("Contador: %d\n", cont);
+		if (!(str = ft_alloc_string(s, c, i)))
+				return (NULL);
+		tab[cont] = ft_write_string(s, str, c, i);
+		while (s[i] != c && s[i])
+			i++;
+		i++;
+		cont++;
+	}
+	tab[cont] = NULL;
+	return (tab);
 }
