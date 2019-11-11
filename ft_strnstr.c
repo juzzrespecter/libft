@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 18:01:56 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/07 15:28:07 by danrodri         ###   ########.fr       */
+/*   Created: 2019/11/11 13:04:35 by danrodri          #+#    #+#             */
+/*   Updated: 2019/11/11 14:14:00 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,26 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	const char	*hptr;
-	const char	*nptr;
-	size_t			i;
+	size_t 	i;
+	size_t 	j;
 
 	i = 0;
-	nptr = needle;
-	if (!*needle)
-	   return ((char *)haystack);
-	while (*haystack)
+	j = 0;
+	if (!needle[j])
+		return ((char *)haystack);
+	while (haystack[i] && i < len)
 	{
-		if (*haystack == *needle)
+		if (haystack[i] == needle[j])
 		{
-			hptr = haystack;
-			while (*haystack == *needle)
+			while (haystack[i + j] == needle[j])
 			{
-				if (!*(needle + 1) || i == len - 1)
-					return ((char *)hptr);
-				haystack++;
-				needle++;
+				if (!needle[j + 1])
+					return ((char *)haystack + i);
+				j++;
 			}
-			needle = nptr;
+			j = 0;
 		}
-		haystack++;
+		i++;
 	}
 	return (NULL);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 19:04:13 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/07 15:26:52 by danrodri         ###   ########.fr       */
+/*   Created: 2019/11/11 12:52:10 by danrodri          #+#    #+#             */
+/*   Updated: 2019/11/11 14:13:24 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t i;
+	size_t	i;
 
+	if (!src)
+		return (0);
 	i = 0;
-	while (src[i] && dstsize - 1 > i)
+	while (src[i] && i < dstsize - 1)
 	{
 		dst[i] = src[i];
 		i++;

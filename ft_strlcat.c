@@ -5,44 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 18:34:57 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/07 15:31:51 by danrodri         ###   ########.fr       */
+/*   Created: 2019/11/11 12:57:12 by danrodri          #+#    #+#             */
+/*   Updated: 2019/11/11 13:18:21 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
+static size_t	ft_lenstr(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t 		tamsrc;
-	size_t		tamdst;
-	size_t 		size;
-	const char 	*startsrc;
+	size_t	i;
+	size_t	size;
 
-	tamsrc = 0;
-	tamdst = 0;
-	startsrc = src;
-	while (*src)
+	i = 0;
+	size = 0;
+	while (dst[size])
+		size++;
+	while (src[i] && (i + size) < (dstsize - 1))
 	{
-		tamsrc++;
-		src++;
+		dst[size + i] = src[i];
+		i++;
 	}
-	src = startsrc;
-	while (*dst)
-	{
-		tamdst++;
-		dst++;
-	}
-	if (tamdst > dstsize)
-		size = dstsize + tamsrc;
+	dst[size + i] = 0;
+	if (size < dstsize)
+		return (size + ft_lenstr(src));
 	else
-		size = tamdst + tamsrc;
-	while (*src &&  dstsize > tamdst + 1)
-	{
-		*dst = *src;
-		dst++;
-		src++;
-	}
-	*dst = 0;
-	return (size);
+		return (dstsize + ft_lenstr(src));
 }

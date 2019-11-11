@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 18:24:53 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/09 22:10:13 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/11 14:20:32 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_list	*ft_lstnew(void const *content)
 	t_list	*lst;
 
 	lst = malloc(sizeof(t_list));
+	if (!lst)
+		return (NULL);
 	lst->content = (void *)content;
 	lst->next = NULL;
 	return (lst);

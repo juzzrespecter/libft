@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 13:55:42 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/10 21:06:59 by danrodri         ###   ########.fr       */
+/*   Created: 2019/11/11 12:10:36 by danrodri          #+#    #+#             */
+/*   Updated: 2019/11/11 13:24:47 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,17 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char *csrc;
-	char *cdst;
-	char *ptr;
+	size_t 				i;
+	unsigned char		*memdst;
+	unsigned const char	*memsrc;
 
-	if (src == NULL)
-		return (NULL);
-	csrc = (char *)src;
-	cdst = (char *)dst;
-	ptr = cdst;
-	while (n--)
+	memsrc = src;
+	memdst = dst;
+	i = 0;
+	while (i < n)
 	{
-		*cdst = *csrc;
-		cdst++;
-		csrc++;	
+		memdst[i] = memsrc[i];
+		i++;
 	}
-	return (ptr);
+	return (memdst);
 }

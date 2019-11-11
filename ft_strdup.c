@@ -6,35 +6,43 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:54:29 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/06 17:37:33 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/10 22:34:18 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
+static size_t	ft_lenstr(const char *s)
+{
+	size_t len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
+}
+
+static char		*ft_cpystr(const char *s1, char *s2)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (s1[i])
+	{
+		s2[i] = s1[i];
+		i++;
+	}
+	s2[i] = 0;
+	return (s2);
+}
+
 char	*ft_strdup(const char *s1)
 {
-	char		*copy;
-	const char	*ptrs1;
-	char		*ptrcopy;
-	int			size;
+	char			*copy;
 
-	size = 0;
-	ptrs1 = s1;
-	while (s1)
-	{
-		size++;
-		s1++;
-	}
-	copy = malloc(sizeof(char) * (size + 1));
-	s1 = ptrs1;
-	ptrcopy = copy;
-	while (s1)
-	{
-		*copy = *s1;
-		copy++;
-		s1++;
-	}
-	*copy = 0;
-	return (ptrcopy);
+	copy = malloc(sizeof(char) * (ft_lenstr(s1) + 1));
+	if (!copy)
+		return (NULL);
+	copy = ft_cpystr(s1, copy);
+	return (copy);
 }

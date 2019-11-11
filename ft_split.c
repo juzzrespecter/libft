@@ -1,16 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split2.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 19:55:19 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/10 20:53:11 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/11 13:13:30 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 
 static int	ft_get_size(char const *s, char c)
@@ -59,11 +58,10 @@ static char	*ft_write_string(char const *s, char *str, char c, int i)
 		i++;
 	}
 	str[j] = 0;
-	printf("String size %d, string %s\n", j, str);
 	return (str);
 }
 
-char	**ft_split2(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	int i;
 	int cont;
@@ -79,7 +77,6 @@ char	**ft_split2(char const *s, char c)
 		return (NULL);
 	while (cont < size)
 	{
-		printf("Contador: %d\n", cont);
 		if (!(str = ft_alloc_string(s, c, i)))
 				return (NULL);
 		tab[cont] = ft_write_string(s, str, c, i);

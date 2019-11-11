@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:32:16 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/09 18:16:30 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/11 13:40:11 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,18 @@ static char	*ft_cpystr(char const *src, char *dst)
 
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	 		*newstring;
+	char	 		*nstr;
 	unsigned int	i;
 
-	newstring = malloc(sizeof(char) * (ft_lenstr(s) + 1));
-	if (newstring == NULL)
+	nstr = malloc(sizeof(char) * (ft_lenstr(s) + 1));
+	if (nstr == NULL)
 		return (NULL);
-	ft_cpystr(s, newstring);
+	ft_cpystr(s, nstr);
 	i = 0;
-	while (newstring[i])
+	while (nstr[i])
 	{
-		newstring[i] = (*f)(i, *s);
+		nstr[i] = (*f)(i, *nstr);
 		i++;
 	}
-	return (newstring);
+	return (nstr);
 }

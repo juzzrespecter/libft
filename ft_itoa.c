@@ -6,14 +6,22 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 20:28:49 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/10 20:55:15 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/11 14:10:35 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		ft_putnbr_chungo(int n, int size)
+int		ft_putnbr_chungo(int n)
 {
+	int size;
+
+	size = 0;
+	if (n == -2147483648)
+	{
+		n = 147483648;
+		size += 2;
+	}
 	if (n < 0)
 	{
 		n *= -1;
@@ -65,8 +73,7 @@ char	*ft_itoa(int n)
 	int 	size;
 	char 	*str;
 	
-	size = 0;
-	size = ft_putnbr_chungo(n, size);
+	size = ft_putnbr_chungo(n);
 	str = malloc(sizeof(char) * (size + 1));
 	if (str == NULL)
 		return (NULL);

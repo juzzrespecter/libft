@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 14:55:01 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/08 16:42:44 by danrodri         ###   ########.fr       */
+/*   Created: 2019/11/11 12:30:59 by danrodri          #+#    #+#             */
+/*   Updated: 2019/11/11 12:47:10 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned char *ss1;
-	unsigned char *ss2;
+	const unsigned char	*mems1;
+	const unsigned char *mems2;
+	size_t				i;
 
-	ss1 = (unsigned char *)s1;
-	ss2 = (unsigned char *)s2;
-	while (*ss1 == *ss2 && n)
-	{
-		ss1++;
-		ss2++;
-		n--;
-	}
-	if (!n)
-		return (0);
-	return (*ss1 - *ss2);
+	mems1 = s1;
+	mems2 = s2;
+	i = 0;
+	while (mems1[i] == mems2[i] && i < n - 1)
+		i++;
+	return (mems1[i] - mems2[i]);
 }

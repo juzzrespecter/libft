@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 20:05:57 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/09 21:28:09 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/11 15:20:14 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	while (lst->next != NULL)
+	while (lst != NULL)
 	{
 		f(lst->content);
 		lst = lst->next;

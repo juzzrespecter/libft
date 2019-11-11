@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 12:59:51 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/07 13:03:10 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/11 13:31:19 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void		ft_putstr_fd(char *s, int fd)
 {
-	while (*s)
-	{
-		write(fd, s, 1);
-		s++;
-	}
+	if (s)
+		while (*s)
+		{
+			write(fd, s, 1);
+			s++;
+		}
 }
