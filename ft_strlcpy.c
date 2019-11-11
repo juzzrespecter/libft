@@ -6,11 +6,21 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 12:52:10 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/11 14:13:24 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/11 17:04:55 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+
+static size_t	ft_lenstr(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
@@ -19,11 +29,14 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	if (!src)
 		return (0);
 	i = 0;
-	while (src[i] && i < dstsize - 1)
+	if (dstsize)
 	{
-		dst[i] = src[i];
-		i++;
+		while (src[i] && i + 1 < dstsize)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = 0;
 	}
-	dst[i] = 0;
-	return (i);
+	return (ft_lenstr(src));
 }
