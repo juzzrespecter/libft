@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 20:28:49 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/11 14:10:35 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/11 19:53:23 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,28 @@ char	ft_get_number(int n, int i)
 
 void	ft_write_str(char *str, int n, int size)
 {
+	int i;
+
+	i = 0;
+	if (n == -2147483648)
+	{
+		str[i] = '-';
+		str[i + 1] = '2';
+		n = 147483648;
+		i += 2;
+	}
 	if (n < 0)
 	{
-		*str = '-';
-		str++;
-		size--;
+		str[i] = '-';
+		i++;
 		n *= -1;
 	}
-	while (size)
+	while (i < size)
 	{
-		*str = ft_get_number(n, size);
-		size--;
-		str++;
+		str[i] = ft_get_number(n, size - i);
+		i++;
 	}
-	*str = 0;
+	str[i] = 0;
 }
 
 char	*ft_itoa(int n)

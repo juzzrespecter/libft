@@ -6,13 +6,13 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 19:55:19 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/11 13:13:30 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/11 19:33:45 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static int	ft_get_size(char const *s, char c)
+static int	ft_tablen(char const *s, char c)
 {
 	int i;
 	int size;
@@ -21,11 +21,14 @@ static int	ft_get_size(char const *s, char c)
 	size = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
+		if (s[i] != c && s[i])
+		{
 			size++;
+			while (s[i] != c && s[i])
+				i++;
+		}
 		i++;
 	}
-	size++;
 	return (size);
 }
 
@@ -63,27 +66,31 @@ static char	*ft_write_string(char const *s, char *str, char c, int i)
 
 char	**ft_split(char const *s, char c)
 {
-	int i;
-	int cont;
-	int size;
-	char *str;
-	char **tab;
-	
+	char	**tab;
+	int		cont;
+	int		size;
+	int		i;
+
+	if (!s)
+		return (NULL);
 	i = 0;
 	cont = 0;
-	size = ft_get_size(s, c);
+	size = ft_tablen(s, c);
 	tab = malloc(sizeof(char *) * (size + 1));
-	if (tab == NULL)
+	if (!tab)
 		return (NULL);
 	while (cont < size)
 	{
-		if (!(str = ft_alloc_string(s, c, i)))
+		if (s[i] != c && s[i])
+		{
+			if (!(tab[cont] = ft_alloc_string(s, c, i)))
 				return (NULL);
-		tab[cont] = ft_write_string(s, str, c, i);
-		while (s[i] != c && s[i])
-			i++;
+			ft_write_string(s, tab[cont], c, i);
+			cont++;
+			while (s[i] != c && s[i])
+				i++;
+		}
 		i++;
-		cont++;
 	}
 	tab[cont] = NULL;
 	return (tab);
