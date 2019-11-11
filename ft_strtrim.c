@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 16:39:18 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/10 22:36:57 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/11 20:58:01 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	ft_trim_left(char const *s1, char const *set)
 		start++;
 	}
 	return (start);
-}	
+}
 
 static int	ft_trim_right(char const *s1, char const *set)
 {
@@ -66,7 +66,7 @@ static int	ft_get_size_trimmed(int start, int end)
 	return (size);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char		*ft_strtrim(char const *s1, char const *set)
 {
 	int		size;
 	char	*starttrm;

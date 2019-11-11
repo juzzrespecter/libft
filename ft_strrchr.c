@@ -6,13 +6,13 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 19:17:20 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/06 18:09:27 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/11 20:53:36 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-char *ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
 	const char *lstoccr;
 

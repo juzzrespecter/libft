@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:32:16 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/11 16:13:13 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/11 20:58:15 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static unsigned int	ft_lenstr(char const *str)
 
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	 		*nstr;
+	char			*nstr;
 	unsigned int	i;
 
 	if (!s)

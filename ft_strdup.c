@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:54:29 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/10 22:34:18 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/11 20:52:59 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char		*ft_cpystr(const char *s1, char *s2)
 	return (s2);
 }
 
-char	*ft_strdup(const char *s1)
+char			*ft_strdup(const char *s1)
 {
 	char			*copy;
 

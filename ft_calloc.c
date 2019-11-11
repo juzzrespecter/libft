@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 15:48:34 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/07 20:28:21 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/11 20:48:13 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ void	*ft_calloc(size_t count, size_t size)
 		mem++;
 		i++;
 	}
-	return ptr;
+	return (ptr);
 }

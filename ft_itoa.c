@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 20:28:49 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/11 19:53:23 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/11 20:52:38 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ void	ft_write_str(char *str, int n, int size)
 
 char	*ft_itoa(int n)
 {
-	int 	size;
-	char 	*str;
-	
+	int		size;
+	char	*str;
+
 	size = ft_putnbr_chungo(n);
 	str = malloc(sizeof(char) * (size + 1));
 	if (str == NULL)

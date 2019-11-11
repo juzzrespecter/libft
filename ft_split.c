@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/10 19:55:19 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/11 19:33:45 by danrodri         ###   ########.fr       */
+/*   Created: 2019/11/11 21:16:24 by danrodri          #+#    #+#             */
+/*   Updated: 2019/11/11 21:16:29 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	ft_tablen(char const *s, char c)
 
 static char	*ft_alloc_string(char const *s, char c, int i)
 {
-	unsigned int 	size;
+	unsigned int	size;
 	char			*str;
 
 	size = 0;
@@ -64,7 +64,7 @@ static char	*ft_write_string(char const *s, char *str, char c, int i)
 	return (str);
 }
 
-char	**ft_split(char const *s, char c)
+char		**ft_split(char const *s, char c)
 {
 	char	**tab;
 	int		cont;
