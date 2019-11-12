@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 21:16:24 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/11 21:16:29 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:06:25 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,14 @@ static char	*ft_write_string(char const *s, char *str, char c, int i)
 	return (str);
 }
 
-char		**ft_split(char const *s, char c)
+static char	**ft_build_tab(char const *s, char c, char **tab)
 {
-	char	**tab;
-	int		cont;
-	int		size;
-	int		i;
+	int cont;
+	int i;
 
-	if (!s)
-		return (NULL);
 	i = 0;
 	cont = 0;
-	size = ft_tablen(s, c);
-	tab = malloc(sizeof(char *) * (size + 1));
-	if (!tab)
-		return (NULL);
-	while (cont < size)
+	while (cont < ft_tablen(s, c))
 	{
 		if (s[i] != c && s[i])
 		{
@@ -93,5 +85,19 @@ char		**ft_split(char const *s, char c)
 		i++;
 	}
 	tab[cont] = NULL;
+	return (tab);
+}
+
+char		**ft_split(char const *s, char c)
+{
+	char	**tab;
+
+	if (!s)
+		return (NULL);
+	tab = malloc(sizeof(char *) * (ft_tablen(s, c) + 1));
+	if (!tab)
+		return (NULL);
+	if (!(tab = ft_build_tab(s, c, tab)))
+		return (NULL);
 	return (tab);
 }
