@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/11 21:16:24 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/12 16:06:25 by danrodri         ###   ########.fr       */
+/*   Created: 2019/11/14 12:59:36 by danrodri          #+#    #+#             */
+/*   Updated: 2019/11/14 16:28:00 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static int	ft_tablen(char const *s, char c)
+static int	ft_sizetab(char const *s, char c)
 {
 	int i;
 	int size;
@@ -27,77 +27,79 @@ static int	ft_tablen(char const *s, char c)
 			while (s[i] != c && s[i])
 				i++;
 		}
-		i++;
+		if (s[i] == c)
+			i++;
+	}
+	size++;
+	return (size);
+}
+
+static int	ft_sizestr(char const *s, char c)
+{
+	int i;
+	int size;
+
+	i = 0;
+	size = 0;
+	while (s[i])
+	{
+		if (s[i] != c)
+		{
+			while (s[i] != c && s[i])
+			{
+				size++;
+				i++;
+			}
+			size++;
+		}
+		if (s[i] == c)
+			i++;
 	}
 	return (size);
 }
 
-static char	*ft_alloc_string(char const *s, char c, int i)
+static char	**ft_tabbuilder(char const *s, char c, void **mtab, void *mstr)
 {
-	unsigned int	size;
-	char			*str;
+	char	**tab;
+	char	*str;
+	int 	i;
 
-	size = 0;
-	while (s[i] != c && s[i])
-	{
-		size++;
-		i++;
-	}
-	str = malloc(sizeof(char) * (size + 1));
-	if (str == NULL)
-		return (NULL);
-	return (str);
-}
-
-static char	*ft_write_string(char const *s, char *str, char c, int i)
-{
-	int j;
-
-	j = 0;
-	while (s[i] != c && s[i])
-	{
-		str[j] = s[i];
-		j++;
-		i++;
-	}
-	str[j] = 0;
-	return (str);
-}
-
-static char	**ft_build_tab(char const *s, char c, char **tab)
-{
-	int cont;
-	int i;
-
+	tab = (char **)mtab;
+	str = (char *)mstr;
 	i = 0;
-	cont = 0;
-	while (cont < ft_tablen(s, c))
+	while (s[i])
 	{
 		if (s[i] != c && s[i])
 		{
-			if (!(tab[cont] = ft_alloc_string(s, c, i)))
-				return (NULL);
-			ft_write_string(s, tab[cont], c, i);
-			cont++;
+			*tab = str;
+			tab++;
 			while (s[i] != c && s[i])
+			{
+				*str = s[i];
+				str++;
 				i++;
+			}
+			*str = 0;
+			str++;
 		}
 		i++;
 	}
-	tab[cont] = NULL;
-	return (tab);
+	*tab = NULL;
+	return ((char **)mtab);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
+	void	*mem;
 	char	**tab;
+	int		tabmem;
+	int		strmem;
 
-	if (!s)
+	tabmem = ft_sizetab(s, c);
+	strmem = ft_sizestr(s, c);
+	mem = malloc(sizeof(char **) * tabmem + strmem);
+	if (mem == NULL)
 		return (NULL);
-	tab = malloc(sizeof(char *) * (ft_tablen(s, c) + 1));
-	if (!tab)
-		return (NULL);
-	if (!(tab = ft_build_tab(s, c, tab)))
-		return (NULL);
+	tab = ft_tabbuilder(s, c, mem, mem + sizeof(char **) * tabmem);
 	return (tab);
 }
