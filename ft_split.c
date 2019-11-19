@@ -1,105 +1,75 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split2.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/14 12:59:36 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/14 16:28:00 by danrodri         ###   ########.fr       */
+/*   Created: 2019/11/18 20:21:48 by danrodri          #+#    #+#             */
+/*   Updated: 2019/11/18 22:21:00 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
-static int	ft_sizetab(char const *s, char c)
+static int		ft_tablen(char const *s, char c)
 {
-	int i;
-	int size;
+	int	len;
+	int	i;
 
+	len = 0;
 	i = 0;
-	size = 0;
 	while (s[i])
 	{
-		if (s[i] != c && s[i])
-		{
-			size++;
-			while (s[i] != c && s[i])
-				i++;
-		}
-		if (s[i] == c)
+		while (s[i] == c)
+			i++;
+		if (s[i] && s[i] != c)
+			len++;
+		while (s[i] && s[i] != c)
 			i++;
 	}
-	size++;
-	return (size);
+	len++;
+	return (len);
 }
 
-static int	ft_sizestr(char const *s, char c)
+static int		ft_slen(char const *s, char c, int i)
 {
-	int i;
-	int size;
+	int	len;
 
-	i = 0;
-	size = 0;
-	while (s[i])
+	len = 0;
+	while (s[i] && s[i] != c)
 	{
-		if (s[i] != c)
-		{
-			while (s[i] != c && s[i])
-			{
-				size++;
-				i++;
-			}
-			size++;
-		}
-		if (s[i] == c)
-			i++;
-	}
-	return (size);
-}
-
-static char	**ft_tabbuilder(char const *s, char c, void **mtab, void *mstr)
-{
-	char	**tab;
-	char	*str;
-	int 	i;
-
-	tab = (char **)mtab;
-	str = (char *)mstr;
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] != c && s[i])
-		{
-			*tab = str;
-			tab++;
-			while (s[i] != c && s[i])
-			{
-				*str = s[i];
-				str++;
-				i++;
-			}
-			*str = 0;
-			str++;
-		}
+		len++;
 		i++;
 	}
-	*tab = NULL;
-	return ((char **)mtab);
+	return (len);
 }
 
-char	**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
-	void	*mem;
 	char	**tab;
-	int		tabmem;
-	int		strmem;
+	int		i;
+	int		j;
 
-	tabmem = ft_sizetab(s, c);
-	strmem = ft_sizestr(s, c);
-	mem = malloc(sizeof(char **) * tabmem + strmem);
-	if (mem == NULL)
+	if (!s)
 		return (NULL);
-	tab = ft_tabbuilder(s, c, mem, mem + sizeof(char **) * tabmem);
+	if (!(tab = malloc(sizeof(char **) * ft_tablen(s, c))))
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		while (s[i] == c)
+			i++;
+		if (s[i])
+		{
+			tab[j] = ft_substr(s, i, ft_slen(s, c, i));
+			j++;
+		}
+		while (s[i] && s[i] != c)
+			i++;
+	}
+	tab[j] = NULL;
 	return (tab);
 }

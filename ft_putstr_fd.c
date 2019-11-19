@@ -5,19 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/07 12:59:51 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/11 13:31:19 by danrodri         ###   ########.fr       */
+/*   Created: 2019/11/18 21:09:33 by danrodri          #+#    #+#             */
+/*   Updated: 2019/11/18 21:30:27 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "libft.h"
 
-void		ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
 	if (s)
-		while (*s)
-		{
-			write(fd, s, 1);
-			s++;
-		}
+		write(fd, s, ft_strlen(s));
 }

@@ -5,90 +5,70 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 16:39:18 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/11 20:58:01 by danrodri         ###   ########.fr       */
+/*   Created: 2019/11/18 19:52:36 by danrodri          #+#    #+#             */
+/*   Updated: 2019/11/19 14:11:24 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 
-static int	ft_check_set_matches(char c, char const *set)
+static int			ft_setmatch(char c, char const *set)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (set[i])
 	{
-		if (c == set[i])
+		if (set[i] == c)
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-static int	ft_trim_left(char const *s1, char const *set)
+static size_t		ft_rtrim(char const *s1, char const *set)
 {
-	int start;
-	int i;
+	int	i;
+	int	r;
 
 	i = 0;
-	start = 0;
-	while (ft_check_set_matches(s1[i], set))
+	r = 0;
+	i = ft_strlen(s1) - 1;
+	while (i > 0 && ft_setmatch(s1[i], set))
 	{
-		i++;
-		start++;
+		i--;
+		r++;
 	}
-	return (start);
+	return (r);
 }
 
-static int	ft_trim_right(char const *s1, char const *set)
+static size_t		ft_ltrim(char const *s1, char const *set)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (s1[i + 1])
+	while (s1[i] && ft_setmatch(s1[i], set))
 		i++;
-	while (ft_check_set_matches(s1[i], set) && i)
-		i--;
 	return (i);
 }
 
-static int	ft_get_size_trimmed(int start, int end)
+char				*ft_strtrim(char const *s1, char const *set)
 {
-	int	size;
-
-	size = 0;
-	while (start <= end)
-	{
-		start++;
-		size++;
-	}
-	return (size);
-}
-
-char		*ft_strtrim(char const *s1, char const *set)
-{
-	int		size;
-	char	*starttrm;
-	char	*strtrimmed;
-	int		start;
-	int		end;
+	char				*str;
+	unsigned int		l;
+	unsigned int		r;
+	size_t				len;
 
 	if (!s1)
 		return (NULL);
-	start = ft_trim_left(s1, set);
-	end = ft_trim_right(s1, set);
-	size = ft_get_size_trimmed(start, end);
-	strtrimmed = malloc(sizeof(char) * (size + 1));
-	if (strtrimmed == NULL)
-		return (NULL);
-	starttrm = strtrimmed;
-	while (start <= end)
-	{
-		*strtrimmed = s1[start];
-		start++;
-		strtrimmed++;
-	}
-	*strtrimmed = 0;
-	return (starttrm);
+	if (!set)
+		return (ft_strdup(s1));
+	r = ft_rtrim(s1, set);
+	l = ft_ltrim(s1, set);
+	len = ft_strlen(s1) - l - r;
+	if (ft_strlen(s1) == l)
+		return (ft_strdup(""));
+	str = ft_substr(s1, l, len);
+	return (str);
 }

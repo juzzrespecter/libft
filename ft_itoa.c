@@ -5,86 +5,71 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 20:28:49 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/11 20:52:38 by danrodri         ###   ########.fr       */
+/*   Created: 2019/11/18 20:40:28 by danrodri          #+#    #+#             */
+/*   Updated: 2019/11/19 16:39:33 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
+#include "libft.h"
 
-int		ft_putnbr_chungo(int n)
+static int		ft_nlen(int n)
 {
-	int size;
+	int	len;
 
-	size = 0;
-	if (n == -2147483648)
-	{
-		n = 147483648;
-		size += 2;
-	}
+	len = 0;
 	if (n < 0)
 	{
 		n *= -1;
-		size++;
+		len++;
 	}
 	while (n > 9)
 	{
-		size++;
-		n = n / 10;
+		n /= 10;
+		len++;
 	}
-	size++;
-	return (size);
+	len++;
+	return (len);
 }
 
-char	ft_get_number(int n, int i)
+static int		ft_nget(int i, int len, int n)
 {
-	int div;
+	int	div;
 
 	div = 1;
-	while (i - 1 > 0)
+	while (i < len - 1)
 	{
 		div *= 10;
-		i--;
+		i++;
 	}
-	n = n / div;
-	return ((n % 10) + '0');
+	n /= div;
+	return (n % 10 + '0');
 }
 
-void	ft_write_str(char *str, int n, int size)
+char			*ft_itoa(int n)
 {
-	int i;
+	char	*str;
+	int		len;
+	int		i;
 
-	i = 0;
 	if (n == -2147483648)
-	{
-		str[i] = '-';
-		str[i + 1] = '2';
-		n = 147483648;
-		i += 2;
-	}
+		return (ft_strdup("-2147483648"));
+	len = ft_nlen(n);
+	if (!(str = malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	i = 0;
 	if (n < 0)
 	{
+		n *= -1;
 		str[i] = '-';
 		i++;
-		n *= -1;
 	}
-	while (i < size)
+	while (i < len)
 	{
-		str[i] = ft_get_number(n, size - i);
+		str[i] = ft_nget(i, len, n);
 		i++;
 	}
 	str[i] = 0;
-}
-
-char	*ft_itoa(int n)
-{
-	int		size;
-	char	*str;
-
-	size = ft_putnbr_chungo(n);
-	str = malloc(sizeof(char) * (size + 1));
-	if (str == NULL)
-		return (NULL);
-	ft_write_str(str, n, size);
 	return (str);
 }
