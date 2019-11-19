@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 19:52:36 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/19 14:11:24 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/19 18:37:23 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ static size_t		ft_rtrim(char const *s1, char const *set)
 
 static size_t		ft_ltrim(char const *s1, char const *set)
 {
-	int	i;
+	int	l;
 
-	i = 0;
-	while (s1[i] && ft_setmatch(s1[i], set))
-		i++;
-	return (i);
+	l = 0;
+	while (s1[l] && ft_setmatch(s1[l], set))
+		l++;
+	return (l);
 }
 
 char				*ft_strtrim(char const *s1, char const *set)
