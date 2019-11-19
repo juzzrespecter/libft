@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 21:11:44 by danrodri          #+#    #+#             */
-/*   Updated: 2019/11/18 21:30:49 by danrodri         ###   ########.fr       */
+/*   Updated: 2019/11/19 18:17:41 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putendl_fd(char *s, int fd)
 {
 	if (s)
 	{
-		write(fd, s, ft_strlen(s));
-		write(fd, "\n", 1);
+		ft_putstr_fd(s, fd);
+		write('\n' ,fd);
 	}
 }
