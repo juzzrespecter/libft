@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 18:43:43 by danrodri          #+#    #+#             */
-/*   Updated: 2020/01/09 19:47:06 by danrodri         ###   ########.fr       */
+/*   Updated: 2020/01/13 12:31:22 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-static int ft_get_isize(int i, int bsize)
+static int ft_get_isize(long int i, int bsize)
 {
 	int isize;
 
@@ -29,17 +29,17 @@ static int ft_get_isize(int i, int bsize)
 
 static char *ft_rev_a(char *a)
 {
-	int asize;
+	int a_len;
 	int i;
 	char aux;
 
-	asize = ft_strlen(a);
+	a_len = ft_strlen(a);
 	i = 0;
-	while (i < asize / 2)
+	while (i < a_len / 2)
 		{
 			aux = a[i];
-			a[i] = a[asize - (i + 1)];
-			a[asize - (i + 1)] = aux;
+			a[i] = a[a_len - (i + 1)];
+			a[a_len - (i + 1)] = aux;
 			i++;
 		}
 	return (a);
@@ -61,22 +61,22 @@ static int ft_check_base(char *base)
 	return (1);
 }
 
-char	*ft_itoa_base(int i, char *base)
+char	*ft_itoa_base(long int i, char *base)
 {
 	char *a;
 	int count;
-	int bsize;
+	int b_len;
 
 	if (!ft_check_base(base))
 		return (NULL);
-	bsize = ft_strlen(base);
-	if (!(a = malloc(sizeof(char) * (ft_get_isize(i, bsize) + 1))))
+	b_len = ft_strlen(base);
+	if (!(a = malloc(sizeof(char) * (ft_get_isize(i, b_len) + 1))))
 		return (NULL);
 	count = 0;
 	while (i)
 		{
-			a[count] = base[i % bsize];
-			i /= bsize;
+			a[count] = base[i % b_len];
+			i /= b_len;
 			count++;
 		}
 	a[count] = 0;
