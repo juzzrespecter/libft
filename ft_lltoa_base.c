@@ -6,7 +6,7 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 18:43:43 by danrodri          #+#    #+#             */
-/*   Updated: 2020/01/13 12:31:22 by danrodri         ###   ########.fr       */
+/*   Updated: 2020/01/15 14:38:58 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int ft_check_base(char *base)
 	return (1);
 }
 
-char	*ft_itoa_base(long int i, char *base)
+char	*ft_lltoa_base(long long int i, char *base)
 {
 	char *a;
 	int count;
