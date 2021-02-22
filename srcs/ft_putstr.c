@@ -6,20 +6,20 @@
 /*   By: danrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 18:35:31 by danrodri          #+#    #+#             */
-/*   Updated: 2020/01/09 19:38:53 by danrodri         ###   ########.fr       */
+/*   Updated: 2021/02/22 17:46:00 by danrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
 	int i;
 
 	i = 0;
 	while (str[i])
-		{
-			ft_putchar(str[i]);
-			i++;
-		}
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
 }
